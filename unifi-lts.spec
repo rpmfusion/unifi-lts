@@ -5,7 +5,7 @@
 
 Name:           unifi-lts
 Version:        5.6.40
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Ubiquiti UniFi controller LTS
 
 License:        Proprietary
@@ -280,6 +280,9 @@ fi
 
 
 %changelog
+* Tue Mar 05 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.6.40-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Fri Sep 21 2018 Richard Shaw <hobbes1069@gmail.com> - 5.6.40-1
 - Initial packaging of LTS version.
 
