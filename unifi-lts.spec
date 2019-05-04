@@ -4,8 +4,8 @@
 %global __strip /bin/true
 
 Name:           unifi-lts
-Version:        5.6.40
-Release:        2%{?dist}
+Version:        5.6.42
+Release:        1%{?dist}
 Summary:        Ubiquiti UniFi controller LTS
 
 License:        Proprietary
@@ -28,7 +28,11 @@ Requires:       firewalld-filesystem
 BuildRequires:  firewalld-filesystem
 BuildRequires:  %{_bindir}/execstack
 
+%if 0%{?fedora} > 29 || 0%{?rhel} > 7
+Requires:       mongodb-org-server
+%else
 Requires:       mongodb-server
+%endif
 Requires:       java-1.8.0-openjdk-headless
 Requires(post): policycoreutils-python
 Requires(postun): policycoreutils-python
@@ -263,6 +267,7 @@ fi
 %{_libdir}/libubnt_webrtc_jni.so
 %{_datadir}/unifi/lib/native/
 %endif
+%{_datadir}/unifi/bin/mongod
 %{_sbindir}/unifi
 %{_sysconfdir}/logrotate.d/unifi
 %{_unitdir}/unifi.service
@@ -276,10 +281,14 @@ fi
 
 %files data
 %exclude %{_datadir}/unifi/lib/native
+%exclude %{_datadir}/unifi/bin/mongod
 %{_datadir}/unifi/
 
 
 %changelog
+* Sat May 04 2019 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-1
+- Update to 5.6.42.
+
 * Tue Mar 05 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.6.40-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
