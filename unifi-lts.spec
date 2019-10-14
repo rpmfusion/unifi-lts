@@ -5,7 +5,7 @@
 
 Name:           unifi-lts
 Version:        5.6.42
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Ubiquiti UniFi controller LTS
 
 License:        Proprietary
@@ -28,14 +28,11 @@ Requires:       firewalld-filesystem
 BuildRequires:  firewalld-filesystem
 BuildRequires:  %{_bindir}/execstack
 
-%if 0%{?fedora} > 29 || 0%{?rhel} > 7
-Requires:       mongodb-org-server
-%else
-Requires:       mongodb-server
-%endif
-Requires:       java-1.8.0-openjdk-headless
-Requires(post): policycoreutils-python
-Requires(postun): policycoreutils-python
+# https://fedoraproject.org/wiki/Changes/MongoDB_Removal
+#Requires:       /usr/bin/mongod
+Requires:       java-headless = 1:1.8.0
+Requires(post): policycoreutils-python-utils
+Requires(postun): policycoreutils-python-utils
 
 # Unbundled fonts
 Requires:       fontawesome-fonts
@@ -212,9 +209,7 @@ install -p %{SOURCE100} %{SOURCE101} .
 # Workaround script for MongoDB 3.6 no longer accepting --nohttpinterface.
 # See: https://community.ubnt.com/t5/UniFi-Routing-Switching/MongoDB-3-6/m-p/2322445#M86254
 #
-%if 0%{?fedora} >= 28
-    install -pm 0755 %{SOURCE6} %{buildroot}%{_datadir}/unifi/bin/mongod
-%endif
+install -pm 0755 %{SOURCE6} %{buildroot}%{_datadir}/unifi/bin/mongod
 
 
 %pre
@@ -286,6 +281,11 @@ fi
 
 
 %changelog
+* Mon Oct 14 2019 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-3
+- Remove hard dependency on mongodb and document in SETUP.
+- Fix Requires for java to comply with guidelines.
+- Try JAVA_HOME instead of forcing java 1.8.0 via alternatives.
+
 * Sat Aug 10 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.6.42-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 

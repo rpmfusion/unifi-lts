@@ -7,12 +7,10 @@ Wants=network-online.target
 Type=simple
 User=unifi
 WorkingDirectory=/usr/share/unifi
-# Has to be run though bash script due to java issue, see:
-# https://bugzilla.redhat.com/show_bug.cgi?id=1358476#c20
-#ExecStart=/usr/sbin/unifi start
-#ExecStop=/usr/sbin/unifi stop
-ExecStart=/usr/bin/java -jar /usr/share/unifi/lib/ace.jar start
-ExecStop=/usr/bin/java -jar /usr/share/unifi/lib/ace.jar stop
+EnvironmentFile=-/etc/sysconfig/unifi
+Environment=JAVA_HOME=/usr/lib/jvm/jre-1.8.0
+ExecStart=/usr/lib/jvm/jre-1.8.0/bin/java $JAVA_OPTS -jar /usr/share/unifi/lib/ace.jar start
+ExecStop=/usr/lib/jvm/jre-1.8.0/bin/java $JAVA_OPTS -jar /usr/share/unifi/lib/ace.jar stop
 Restart=on-success
 
 [Install]
