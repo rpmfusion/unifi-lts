@@ -5,7 +5,7 @@
 
 Name:           unifi-lts
 Version:        5.6.42
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Ubiquiti UniFi controller LTS
 
 License:        Proprietary
@@ -281,6 +281,9 @@ fi
 
 
 %changelog
+* Wed Feb 05 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.6.42-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Mon Oct 14 2019 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-3
 - Remove hard dependency on mongodb and document in SETUP.
 - Fix Requires for java to comply with guidelines.
