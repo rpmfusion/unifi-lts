@@ -290,6 +290,9 @@ fi
 * Tue Feb 18 2020 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-4
 - Fix Requires for EL 7, fixes RFBZ#5531.
 
+* Wed Feb 05 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.6.42-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Mon Oct 14 2019 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-3
 - Remove hard dependency on mongodb and document in SETUP.
 - Fix Requires for java to comply with guidelines.
