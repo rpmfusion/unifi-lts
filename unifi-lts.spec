@@ -5,7 +5,7 @@
 
 Name:           unifi-lts
 Version:        5.6.42
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Ubiquiti UniFi controller LTS
 
 License:        Proprietary
@@ -31,8 +31,14 @@ BuildRequires:  %{_bindir}/execstack
 # https://fedoraproject.org/wiki/Changes/MongoDB_Removal
 #Requires:       /usr/bin/mongod
 Requires:       java-headless = 1:1.8.0
+
+%if 0%{?rhel} < 8
+Requires(post): policycoreutils-python
+Requires(postun): policycoreutils-python
+%else
 Requires(post): policycoreutils-python-utils
 Requires(postun): policycoreutils-python-utils
+%endif
 
 # Unbundled fonts
 Requires:       fontawesome-fonts
@@ -281,6 +287,9 @@ fi
 
 
 %changelog
+* Tue Feb 18 2020 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-4
+- Fix Requires for EL 7, fixes RFBZ#5531.
+
 * Mon Oct 14 2019 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-3
 - Remove hard dependency on mongodb and document in SETUP.
 - Fix Requires for java to comply with guidelines.
