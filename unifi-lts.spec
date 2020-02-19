@@ -32,7 +32,7 @@ BuildRequires:  %{_bindir}/execstack
 #Requires:       /usr/bin/mongod
 Requires:       java-headless = 1:1.8.0
 
-%if 0%{?rhel} < 8
+%if 0%{?rhel} && 0%{?rhel} < 8
 Requires(post): policycoreutils-python
 Requires(postun): policycoreutils-python
 %else
