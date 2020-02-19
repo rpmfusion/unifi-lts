@@ -5,7 +5,7 @@
 
 Name:           unifi-lts
 Version:        5.6.42
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Ubiquiti UniFi controller LTS
 
 License:        Proprietary
@@ -287,6 +287,9 @@ fi
 
 
 %changelog
+* Wed Feb 19 2020 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-5
+- Really fix requires for policycoreutils-python on EL 7.
+
 * Tue Feb 18 2020 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-4
 - Fix Requires for EL 7, fixes RFBZ#5531.
 
