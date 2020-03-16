@@ -5,12 +5,12 @@
 
 Name:           unifi-lts
 Version:        5.6.42
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Ubiquiti UniFi controller LTS
 
 License:        Proprietary
 URL:            https://unifi-sdn.ubnt.com/
-Source0:        http://dl.ubnt.com/unifi/%{version}/UniFi.unix.zip#/UniFi-%{version}.unix.zip
+Source0:        http://dl.ui.com/unifi/%{version}/UniFi.unix.zip#/UniFi-%{version}.unix.zip
 Source1:        unifi.service
 Source3:        unifi.xml
 Source4:        unifi.logrotate
@@ -30,7 +30,7 @@ BuildRequires:  %{_bindir}/execstack
 
 # https://fedoraproject.org/wiki/Changes/MongoDB_Removal
 #Requires:       /usr/bin/mongod
-Requires:       java-headless = 1:1.8.0
+Requires:       java-headless >= 1:1.8.0
 
 %if 0%{?rhel} && 0%{?rhel} < 8
 Requires(post): policycoreutils-python
@@ -287,6 +287,9 @@ fi
 
 
 %changelog
+* Mon Mar 16 2020 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-6
+- Update java requires to work with change in java provides in Fedora.
+
 * Wed Feb 19 2020 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-5
 - Really fix requires for policycoreutils-python on EL 7.
 
