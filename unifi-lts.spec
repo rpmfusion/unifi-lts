@@ -5,7 +5,7 @@
 
 Name:           unifi-lts
 Version:        5.6.42
-Release:        11%{?dist}
+Release:        12%{?dist}
 Summary:        Ubiquiti UniFi controller LTS
 
 License:        Proprietary
@@ -289,6 +289,9 @@ fi
 
 
 %changelog
+* Mon Jul 10 2023 Richard Shaw <hobbes1069@gmail.com> - 5.6.42-12
+- Rebuild with conditional for FontAwesome6.
+
 * Mon Aug 08 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 5.6.42-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
