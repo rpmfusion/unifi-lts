@@ -41,10 +41,7 @@ Requires(postun): policycoreutils-python-utils
 %endif
 
 # Unbundled fonts
-%if %{?fedora} < 39
 Requires:       fontawesome-fonts
-%endif
-Requires:       fontawesome-fonts-web
 
 # Prevent other versions of unifi from being installed.
 Conflicts:      unifi unifi-controller
